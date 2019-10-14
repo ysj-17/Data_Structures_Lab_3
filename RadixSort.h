@@ -1,5 +1,5 @@
-#ifndef LAB3_RADIX
-#define LAB3_RADIX
+#ifndef RADIX_SORT
+#define RADIX_SORT
 #include <string>
 #include "List.h"
 
@@ -18,23 +18,24 @@ public:
 };
 
 
-
+// Function:
+// Recieves List of data and also array containing 10 lists (bucketArray)
+// bucketArray is the intermediary structure to contain sorted data
+// Returns sorted linked list by reference
 template<class T>
 void RadixSort<T>:: sort(List<T> &objectInt, List<T> bucketArray[10]) {
 
-	// int maxDigits = 5;
 	int pow10 = 1;
 	int counter = 0;
 	int container = 0;
-	
 	int dataSize = objectInt.sizeOfList();
-
 	int maxDigits = radixGetMaxLength(objectInt, dataSize);
-
-	/*cout << endl << dataSize << " " << maxDigits;*/
 
 	for (int digitIndex = 0; digitIndex < maxDigits; digitIndex++) {
 		// This for loop controls putting the data into the buckets
+		// Also handles the sort
+		// Ex. 1 goes into bucketArray[1], 9 goes into bucketArray[9]
+		// (cont.) then array positions accessed to get sorted integers
 		for (int index = 0; index < dataSize; index++) {
 			container = objectInt.returnValue(index);
 			bucketArray[abs(container / pow10) % 10].add(container); 
@@ -47,15 +48,11 @@ void RadixSort<T>:: sort(List<T> &objectInt, List<T> bucketArray[10]) {
 		for (int index = 0; index < 10; index++) {
 			int sizeList = bucketArray[index].sizeOfList();
 			if (sizeList != 0) {
-				for (int bucketListIndex = 0; bucketListIndex < sizeList; 
-														bucketListIndex++) {
-
+				for (int bucketListIndex = 0; bucketListIndex < sizeList; bucketListIndex++) {
 					T copier = bucketArray[index].returnValue(bucketListIndex);
 					objectInt.add(copier); // Put in new data into original List
 				}
 			}
-			else; // Else do nothing if list is less than 0 size
-
 			
 		}
 		pow10 = 10 * pow10;
@@ -67,7 +64,9 @@ void RadixSort<T>:: sort(List<T> &objectInt, List<T> bucketArray[10]) {
 }
 
 
-
+// Function:
+// Recieves List of int and size of list
+// Returns maximum length of number found in List
 template<class T>
 int RadixSort<T>::radixGetMaxLength(List<T> &objectInt, int size) {
 	int maxDigits = 0;
@@ -79,7 +78,9 @@ int RadixSort<T>::radixGetMaxLength(List<T> &objectInt, int size) {
 	return maxDigits;
 }
 
-
+// Function: 
+// Recieves integer numbers a returns length of number
+// Ex. 1514 --> has length of 4
 template<class T>
 int RadixSort<T>::radixGetLength(int num) {
 

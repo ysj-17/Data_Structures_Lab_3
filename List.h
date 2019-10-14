@@ -1,5 +1,5 @@
-#ifndef LAB3_LIST
-#define LAB3_LIST
+#ifndef DOUBLY_LIST
+#define DOUBLY_LIST
 using std::cout;
 using std::endl;
 
@@ -33,30 +33,17 @@ public:
 
 template <class T> class List : public ListInterface<T>
 {
-private:
-	//using Node<T>::head;
-	//using Node<T>::tail;
-
 
 public:
 	using Node<T>::head;
 	using Node<T>::tail;
 	List() { head = nullptr; tail = nullptr; }
-
-//--New functions (Lab 3) ------------------
-
 	int sizeOfList();
 	T returnValue(int size);
 	void radixSort(List<int> objectInt);
 	int radixGetMaxLength(int *unsorted, int arraySize);
 	int radixGetLength(int dataInput);
 
-
-//--Old functions (Lab 2) ------------------
-	//void sortingListNum();
-	//void sortingListString();
-	//bool binarySearch(T value);
-//--Older functions (Lab 1) ------------------	
 	bool isEmpty() {
 		if (head == NULL) {
 			return true;
@@ -173,8 +160,6 @@ T List<T>::returnValue(int size) {
 	T container;
 
 	if (rover != NULL) {
-		//if (size == 0)
-			//return rover->item;
 		while (counter != size) {
 			rover = rover->prev;
 			counter++;

@@ -1,28 +1,13 @@
-// Program Name: Lab3
-//
 // Description:  
 //  Using double linked list operations to read a file
 //  Using that read data and sorting with Radix Sort
+// 
+// Big O(N):
+//  O(nk) not including doubly linked list operations
 //
-// What's on your mind about this lab?
-//  It was very difficult for me to get the sort working
-//  Double checking the quality of the lists, data, and sizes
-//  was very tedious - but in the process I learned alot more.
 //
 // Author: Jason Yoon
-//
-// Date: 7/20/2018
-//
-// IDE Used: Visual Microsoft
-//
 
-//--- New Functions in List.h ---
-//int sizeOfList();
-//T returnValue(int size);
-//void radixSort(List<int> objectInt);
-//int radixGetMaxLength(int *unsorted, int arraySize);
-//int radixGetLength(int dataInput);
-//
 
 
 #include <iostream>
@@ -31,7 +16,7 @@
 #include <sstream>
 #include <windows.h> 
 #include "List.h"
-#include "RadixRestart.h"
+#include "RadixSort.h"
 
 using namespace std;
 
@@ -66,16 +51,14 @@ int main() {
 		}
 	}
 
-
-	//objectInt.displayList();
-	//Sleep(5000);
-
+	// For testing
 	// Get number of items before Sort
 	total_ItemsBefore_Sort = objectInt.sizeOfList();
 
 	// Sorting here
 	radixObj.sort(objectInt, bucketArray);
 
+	// For testing
 	// Number of items after sort
 	total_ItemsAfter_Sort = objectInt.sizeOfList();
 
@@ -89,7 +72,6 @@ int main() {
 
 
 
-	// cin.ignore();
 	cin.get();
 	return 0;
 }
