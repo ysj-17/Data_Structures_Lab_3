@@ -1,4 +1,4 @@
-# Data Structures - Radix Search
+# Data Structures - Radix Sort
 
 __Summary__:
 
